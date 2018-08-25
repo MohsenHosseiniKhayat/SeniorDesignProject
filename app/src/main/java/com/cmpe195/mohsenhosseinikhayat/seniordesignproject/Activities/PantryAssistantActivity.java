@@ -1,4 +1,4 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
-
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.PantryAssistantRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryAssistantViewModel;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.vikramezhil.droidspeech.DroidSpeech;
 import com.vikramezhil.droidspeech.OnDSListener;
 
@@ -92,6 +94,9 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
         itemTouchHelper.attachToRecyclerView(pantryReceiptRecyclerView);
     }
 
+    /**
+     * Handler for confirmButton
+     */
     private void confirmButtonClicked() {
         viewModel.confirmIngredientAddition();
         pantryReceiptArrayAdapter = new PantryAssistantRecyclerAdapter

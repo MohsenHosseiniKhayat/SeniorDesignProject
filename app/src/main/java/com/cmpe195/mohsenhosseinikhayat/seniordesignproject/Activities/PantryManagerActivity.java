@@ -1,4 +1,4 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
+
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.PantryManagerRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryManagerViewModel;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 
 public class PantryManagerActivity extends AppCompatActivity implements PantryManagerRecyclerAdapter.ItemClickListener {
 
@@ -35,6 +39,9 @@ public class PantryManagerActivity extends AppCompatActivity implements PantryMa
         pantryManagerRecyclerAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Retrieves views and performs related setup
+     */
     private void setupView()
     {
         goToAssistantButton = (Button) findViewById(R.id.goToAssistantButton);

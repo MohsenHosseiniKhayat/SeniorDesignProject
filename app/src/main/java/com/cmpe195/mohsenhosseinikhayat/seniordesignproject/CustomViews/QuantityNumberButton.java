@@ -1,4 +1,4 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.CustomViews;
 
 import android.content.Context;
 import android.content.res.Resources;

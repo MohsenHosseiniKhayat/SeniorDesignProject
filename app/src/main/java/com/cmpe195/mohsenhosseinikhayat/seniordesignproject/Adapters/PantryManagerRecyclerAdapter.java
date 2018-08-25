@@ -1,4 +1,4 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter;
-import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
-import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder;
-import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 
 import java.util.ArrayList;
 
@@ -74,7 +72,7 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
         }
     }
 
-    void setOnClickListener(ItemClickListener itemClickListener)
+    public void setOnClickListener(ItemClickListener itemClickListener)
     {
         this.itemClickListener = itemClickListener;
     }

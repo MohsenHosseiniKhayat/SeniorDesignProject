@@ -1,9 +1,12 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.IngredientDetailViewModel;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 
 public class IngredientDetailActivity extends AppCompatActivity {
 
@@ -23,6 +26,9 @@ public class IngredientDetailActivity extends AppCompatActivity {
         setupView();
     }
 
+    /**
+     * Retrieves views and performs their setup
+     */
     private void setupView() {
         ingredientNameTextView = (TextView) findViewById(R.id.ingredientNameTextView);
         ingredientMeasurementUnitTextView = (TextView) findViewById(R.id.ingredientMeasurementUnitTextView);

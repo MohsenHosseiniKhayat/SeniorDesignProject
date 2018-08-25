@@ -1,4 +1,4 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models;
 
 public class IngredientCommand
 {
@@ -13,6 +13,10 @@ public class IngredientCommand
         this.ingredient = ingredient;
     }
 
+    /**
+     * Assembles command info into a string
+     * @return command info in string format
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

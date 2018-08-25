@@ -1,4 +1,4 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.IngredientCommand;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.MeasurementUnit;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryAssistantViewModel;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 
 import java.util.List;
 
@@ -95,6 +100,11 @@ public class PantryAssistantRecyclerAdapter extends RecyclerView.Adapter<PantryA
         });
     }
 
+    /**
+     * Toggle keyboard to pre-validate user input
+     * @param ingredientCommand The ingredient command selected
+     * @param editText The row's edit text
+     */
     private void toggleKeyboard(IngredientCommand ingredientCommand, EditText editText) {
 
         switch (ingredientCommand.getMeasurementUnit()) {
@@ -177,7 +187,7 @@ public class PantryAssistantRecyclerAdapter extends RecyclerView.Adapter<PantryA
         return ingredientCommandList.get(id);
     }
 
-    void setClickListener(ItemClickListener itemClickListener)
+    public void setClickListener(ItemClickListener itemClickListener)
     {
         this.itemClickListener = itemClickListener;
     }

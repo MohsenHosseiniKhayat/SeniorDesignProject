@@ -1,6 +1,10 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels;
 
-import java.lang.reflect.Array;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.IngredientCommand;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.MeasurementUnit;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Repositories.PantryRepository;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,6 +17,9 @@ public class PantryAssistantViewModel
     private ArrayList<IngredientCommand> ingredientCommands;
     private String [] ingredientNames;
 
+    /**
+     * Constructor for view model
+     */
     public PantryAssistantViewModel()
     {
         this.repo = PantryRepository.getInstance();
@@ -32,6 +39,7 @@ public class PantryAssistantViewModel
 
     /**
      * Parses speech and creates IngredientCommands from it
+     * This is where we need to change later on to improve speech usefulness
      * @param speechText speech from DroidSpeech OnResults
      */
     public void parseSpeech(String speechText)
@@ -144,6 +152,9 @@ public class PantryAssistantViewModel
                 new MeasurementUnit[] {MeasurementUnit.MILLILITER, MeasurementUnit.LITER, MeasurementUnit.CUP, MeasurementUnit.TEASPOON, MeasurementUnit.TABLESPOON});
     }
 
+    /**
+     * Creates the conversion mapping we need to use for converting values
+     */
     private void setupConversionMapping()
     {
         unitConversionTables = new HashMap<>();
