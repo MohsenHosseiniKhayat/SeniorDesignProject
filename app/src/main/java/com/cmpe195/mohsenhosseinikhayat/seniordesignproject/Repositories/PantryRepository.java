@@ -59,14 +59,19 @@ public class PantryRepository {
      */
     private void tempCreateIngredientsForTesting()
     {
-        String [] names = {"apple", "banana", "onion", "cucumber", "pomegranate", "water", "flour"};
+        String [] names = {"apple", "banana", "onion", "cucumber", "pomegranate", "water", "flour", "beef", "chicken", "fish", "pepperoni", "potato"};
         MeasurementUnit[] measurementUnits = {MeasurementUnit.POUND,
                 MeasurementUnit.KILOGRAM,
                 MeasurementUnit.GRAM,
                 MeasurementUnit.POUND,
                 MeasurementUnit.MILLIGRAM,
                 MeasurementUnit.CUP,
-                MeasurementUnit.TEASPOON};
+                MeasurementUnit.TEASPOON,
+                MeasurementUnit.POUND,
+                MeasurementUnit.KILOGRAM,
+                MeasurementUnit.OUNCE,
+                MeasurementUnit.GRAM,
+                MeasurementUnit.KILOGRAM};
 
         ingredientsHashMap = new HashMap<String, Ingredient>();
 
