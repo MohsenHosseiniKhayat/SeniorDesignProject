@@ -4,9 +4,10 @@ import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.MealType;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
 
-class RecipeRepository {
+public class RecipeRepository {
     private static RecipeRepository ourInstance = new RecipeRepository();
 
     private RecipeRepository() {
@@ -16,7 +17,11 @@ class RecipeRepository {
         }
     }
 
-
+    /**
+     * Search for recipe by name
+     * @param queryString User input
+     * @return Recipes that match the name
+     */
     public ArrayList<Recipe> SearchRecipesByName(String queryString)
     {
         Recipe[] fakeRecipes = FakeRecipesForMohsen();
@@ -35,6 +40,80 @@ class RecipeRepository {
         return results;
     }
 
+
+    /**
+     * Search for recipe by ingredient
+     * @param queryString User input
+     * @return Recipes that contain that ingredient
+     */
+    public ArrayList<Recipe> SearchRecipeByIngredient(String queryString)
+    {
+        Recipe[] fakeRecipes = FakeRecipesForMohsen();
+        ArrayList<Recipe> results = new ArrayList<>();
+
+        for (int i = 0; i < fakeRecipes.length; i++)
+        {
+            Recipe currentRecipe = fakeRecipes[i];
+
+            if (Arrays.asList(currentRecipe.getIngredients()).contains(queryString))
+            {
+                results.add(currentRecipe);
+            }
+        }
+
+        return results;
+    }
+
+    /**
+     * Search for recipe by calories
+     * @param calories Calories target by user
+     * @return Recipes that have less or equal calories to user target
+     */
+    public ArrayList<Recipe> SearchRecipeByCalories(int calories)
+    {
+        Recipe[] fakeRecipes = FakeRecipesForMohsen();
+        ArrayList<Recipe> results = new ArrayList<>();
+
+        for (int i = 0; i < fakeRecipes.length; i++)
+        {
+            Recipe currentRecipe = fakeRecipes[i];
+
+            if (currentRecipe.getCalories() < calories)
+            {
+                results.add(currentRecipe);
+            }
+        }
+
+        return results;
+    }
+
+    /**
+     * Search for recipes by tags
+     * @param queryString User tag input
+     * @return Recipes that contain said tag
+     */
+    public ArrayList<Recipe> SearchRecipeByTag(String queryString)
+    {
+        Recipe[] fakeRecipes = FakeRecipesForMohsen();
+        ArrayList<Recipe> results = new ArrayList<>();
+
+        for (int i = 0; i < fakeRecipes.length; i++)
+        {
+            Recipe currentRecipe = fakeRecipes[i];
+
+            if (Arrays.asList(currentRecipe.getTags()).contains(queryString))
+            {
+                results.add(currentRecipe);
+            }
+        }
+
+        return results;
+    }
+
+    /**
+     * Fake recipes for testing
+     * @return A bunch of recipes
+     */
     private Recipe[] FakeRecipesForMohsen()
     {
         Recipe recipe1 = new Recipe("chicken shawarma", "shawarma with chicken", new String[] {"chicken", "banana"},
@@ -70,6 +149,10 @@ class RecipeRepository {
         return new Recipe[] {recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8, recipe9, recipe10};
     }
 
+    /**
+     * Fetch the repo instance, if non existent, creates one
+     * @return The instance of the repository
+     */
     public static RecipeRepository getInstance() {
         if (ourInstance == null)
         {
