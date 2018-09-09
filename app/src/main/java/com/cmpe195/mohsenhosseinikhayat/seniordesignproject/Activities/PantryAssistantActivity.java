@@ -29,7 +29,6 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantry_assistant);
         viewModel = new PantryAssistantViewModel();
         setupView();
     }
@@ -39,6 +38,8 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
      */
     private void setupView()
     {
+        setContentView(R.layout.activity_pantry_assistant);
+
         //Setup droidSpeech
         droidSpeech = new DroidSpeech(this, null, viewModel.getPossibleWords());
         droidSpeech.setOnDroidSpeechListener(this);

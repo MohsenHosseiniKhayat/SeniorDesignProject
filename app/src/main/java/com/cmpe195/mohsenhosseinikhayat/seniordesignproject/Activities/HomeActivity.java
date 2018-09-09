@@ -19,16 +19,20 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Intent intent;
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_search);
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_search);
+                    intent = new Intent(HomeActivity.this, RecipeSearchActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_pantry);
-                    Intent intent = new Intent(HomeActivity.this, PantryManagerActivity.class);
+                    intent = new Intent(HomeActivity.this, PantryManagerActivity.class);
                     startActivity(intent);
             }
             return false;

@@ -24,7 +24,6 @@ public class PantryManagerActivity extends AppCompatActivity implements PantryMa
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantry_manager);
         this.viewModel = new PantryManagerViewModel();
         setupView();
     }
@@ -44,6 +43,7 @@ public class PantryManagerActivity extends AppCompatActivity implements PantryMa
      */
     private void setupView()
     {
+        setContentView(R.layout.activity_pantry_manager);
         goToAssistantButton = (Button) findViewById(R.id.goToAssistantButton);
         goToAssistantButton.setOnClickListener(new View.OnClickListener()
         {
