@@ -19,7 +19,6 @@ public class IngredientDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ingredient_detail);
         String nameOfIngredient = getIntent().getStringExtra("ingredientName");
         viewModel = new IngredientDetailViewModel(nameOfIngredient);
         ingredient = viewModel.getIngredient();
@@ -30,6 +29,7 @@ public class IngredientDetailActivity extends AppCompatActivity {
      * Retrieves views and performs their setup
      */
     private void setupView() {
+        setContentView(R.layout.activity_ingredient_detail);
         ingredientNameTextView = (TextView) findViewById(R.id.ingredientNameTextView);
         ingredientMeasurementUnitTextView = (TextView) findViewById(R.id.ingredientMeasurementUnitTextView);
         ingredientQuantityTextView = (TextView) findViewById(R.id.ingredientQuantityTextView);

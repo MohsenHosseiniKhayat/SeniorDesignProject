@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Recipe
 {
     private String name;
-    private Ingredient[] ingredients;
+    private String[] ingredients;
     private double estimatedPrice;
     private String[] cookingSteps;
     private String description;
@@ -15,7 +15,7 @@ public class Recipe
     private MealType mealType;
 
 
-    public Recipe(String name, String description, Ingredient[] ingredients, String[] cookingSteps, int servings, String[] tags, MealType mealType, int calories)
+    public Recipe(String name, String description, String[] ingredients, String[] cookingSteps, int servings, String[] tags, MealType mealType, int calories)
     {
         this.name = name;
         this.description = description;
@@ -35,7 +35,7 @@ public class Recipe
         return estimatedPrice;
     }
 
-    public Ingredient[] getIngredients() {
+    public String[] getIngredients() {
         return ingredients;
     }
 
@@ -79,7 +79,7 @@ public class Recipe
         this.description = description;
     }
 
-    public void setIngredients(Ingredient[] ingredients) {
+    public void setIngredients(String[] ingredients) {
         this.ingredients = ingredients;
     }
 
