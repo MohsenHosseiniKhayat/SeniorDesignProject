@@ -1,11 +1,18 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Recipe
 {
     private String name;
-    private String[] ingredients;
+    private HashMap<Ingredient, Double> ingredients;
+
+    // This is for the serialization process. Serialize this list, then when deserializing this we can refer to the
+    // correct ingredients through the pantryRepo. No duplicate data of rewriting ingredient objects.
+    private String[] ingredientsNames;
+
+
     private double estimatedPrice;
     private String[] cookingSteps;
     private String description;
@@ -15,7 +22,7 @@ public class Recipe
     private MealType mealType;
 
 
-    public Recipe(String name, String description, String[] ingredients, String[] cookingSteps, int servings, String[] tags, MealType mealType, int calories)
+    public Recipe(String name, String description, HashMap<Ingredient, Double> ingredients, String[] cookingSteps, int servings, String[] tags, MealType mealType, int calories)
     {
         this.name = name;
         this.description = description;
@@ -35,7 +42,7 @@ public class Recipe
         return estimatedPrice;
     }
 
-    public String[] getIngredients() {
+    public HashMap<Ingredient, Double> getIngredients() {
         return ingredients;
     }
 
@@ -79,7 +86,7 @@ public class Recipe
         this.description = description;
     }
 
-    public void setIngredients(String[] ingredients) {
+    public void setIngredients(HashMap<Ingredient, Double> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -105,7 +112,7 @@ public class Recipe
 
         return this.name.equals(that.name)
                 && this.description.equals(that.description)
-                && Arrays.equals(this.ingredients, that.ingredients)
+                &&  this.ingredients.equals(that.ingredients)
                 && Arrays.equals(this.cookingSteps, that.cookingSteps)
                 && this.calories == that.calories
                 && this.servings == that.servings

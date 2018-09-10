@@ -8,11 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.HomeViewModel;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private HomeViewModel model;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,10 +48,26 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        model = new HomeViewModel();
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        ArrayList<Recipe> result = model.recommendRecipes();
+
+        int a = result.size();
+    }
+
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        ArrayList<Recipe> result = model.recommendRecipes();
+
+        int a = result.size();
     }
 
 }
