@@ -2,17 +2,18 @@ package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Recipe
 {
     private String name;
-    private HashMap<Ingredient, Double> ingredients;
+    private LinkedHashMap<Ingredient, Double> ingredients;
 
     // This is for the serialization process. Serialize this list, then when deserializing this we can refer to the
     // correct ingredients through the pantryRepo. No duplicate data of rewriting ingredient objects.
     private String[] ingredientsNames;
 
-
+    private boolean favorite;
     private double estimatedPrice;
     private String[] cookingSteps;
     private String description;
@@ -22,7 +23,7 @@ public class Recipe
     private MealType mealType;
 
 
-    public Recipe(String name, String description, HashMap<Ingredient, Double> ingredients, String[] cookingSteps, int servings, String[] tags, MealType mealType, int calories)
+    public Recipe(String name, String description, LinkedHashMap<Ingredient, Double> ingredients, String[] cookingSteps, int servings, String[] tags, MealType mealType, int calories)
     {
         this.name = name;
         this.description = description;
@@ -42,7 +43,7 @@ public class Recipe
         return estimatedPrice;
     }
 
-    public HashMap<Ingredient, Double> getIngredients() {
+    public LinkedHashMap<Ingredient, Double> getIngredients() {
         return ingredients;
     }
 
@@ -86,8 +87,24 @@ public class Recipe
         this.description = description;
     }
 
-    public void setIngredients(HashMap<Ingredient, Double> ingredients) {
+    public void setIngredients(LinkedHashMap<Ingredient, Double> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public void setIngredientsNames(String[] ingredientsNames) {
+        this.ingredientsNames = ingredientsNames;
+    }
+
+    public String[] getIngredientsNames() {
+        return ingredientsNames;
     }
 
     public void setEstimatedPrice(double estimatedPrice) {

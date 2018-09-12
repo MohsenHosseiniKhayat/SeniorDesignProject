@@ -54,5 +54,11 @@ public class RecipeSearchViewModel
         return repo.SearchRecipeByTag(queryString);
     }
 
+    public void toggleFavoriteStatusForRecipe(Recipe recipe, boolean status)
+    {
+        recipe.setFavorite(status);
+        repo.saveRecipes();
+    }
+
 
 }

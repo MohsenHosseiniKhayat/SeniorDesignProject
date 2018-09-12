@@ -7,6 +7,7 @@ import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.concurrent.RecursiveAction;
 
@@ -27,6 +28,27 @@ public class RecipeRepository {
     public ArrayList<Recipe> getAllRecipes()
     {
         return allRecipes;
+    }
+
+    /**
+     * Find recipe with given name
+     * @param recipeName The name of the recipe to retrieve
+     * @return The recipe that has a matching name
+     */
+    public Recipe getRecipeWithName(String recipeName)
+    {
+        Recipe result = null;
+
+        for (Recipe recipe : allRecipes)
+        {
+            if (recipe.getName().equals(recipeName))
+            {
+                result = recipe;
+                break;
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -162,9 +184,9 @@ public class RecipeRepository {
      * @param recipeNames the names of the recipes
      * @return A hashmap of ingredient to requirements
      */
-    private HashMap<Ingredient, Double> tempCreateIngredientHashMaps(String[] recipeNames)
+    private LinkedHashMap<Ingredient, Double> tempCreateIngredientHashMaps(String[] recipeNames)
     {
-        HashMap<Ingredient, Double> result = new HashMap<>();
+        LinkedHashMap<Ingredient, Double> result = new LinkedHashMap<>();
         Random random = new Random();
         int limit = 100;
 
@@ -192,5 +214,11 @@ public class RecipeRepository {
         }
 
         return ourInstance;
+    }
+
+    public void saveRecipes()
+    {
+        // For now the only thing that changes on recipes is their favorite status
+        //Serialize allRecipes here.
     }
 }

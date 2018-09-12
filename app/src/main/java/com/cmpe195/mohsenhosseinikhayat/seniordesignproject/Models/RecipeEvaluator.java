@@ -7,17 +7,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RecipeEvaluator {
 
-    private HashMap<Recipe, Double> recipeScoresHashMap;
+    private LinkedHashMap<Recipe, Double> recipeScoresHashMap;
     private ArrayList<Recipe> allRecipes;
 
     public RecipeEvaluator(RecipeRepository recipeRepo)
     {
         recipeRepo = RecipeRepository.getInstance();
-        recipeScoresHashMap = new HashMap<>();
+        recipeScoresHashMap = new LinkedHashMap<>();
         allRecipes = recipeRepo.getAllRecipes();
     }
 
@@ -25,7 +26,7 @@ public class RecipeEvaluator {
      * Returns a mapping of recipes to their ingredient requirement completion rate
      * @return A hashmap of recipe to completion rate
      */
-    public HashMap<Recipe, Double> getRecipeScoresHashMap() {
+    public LinkedHashMap<Recipe, Double> getRecipeScoresHashMap() {
         evaluateRecipes();
         return recipeScoresHashMap;
     }
@@ -43,7 +44,7 @@ public class RecipeEvaluator {
         ArrayList<Double> values = new ArrayList<>(recipeScoresHashMap.values());
         ArrayList<Recipe> keys = new ArrayList<>(recipeScoresHashMap.keySet());
 
-        HashMap<Recipe, Double> sortedHashMap = new HashMap<>();
+        LinkedHashMap<Recipe, Double> sortedHashMap = new LinkedHashMap<>();
 
         for (int i = 0; i < recipeScoresHashMap.keySet().size(); i++)
         {
@@ -64,7 +65,7 @@ public class RecipeEvaluator {
      * @param recipe The recipe to evaluate
      * @return A double value representing how close the user is to being able to make that recipe
      */
-    private double evaluateRecipe(Recipe recipe)
+    public double evaluateRecipe(Recipe recipe)
     {
         double result = 0;
         double [] percentages = new double[recipe.getIngredients().size()];

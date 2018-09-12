@@ -13,6 +13,7 @@ import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.HomeViewModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -54,9 +55,8 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        ArrayList<Recipe> result = model.recommendRecipes();
+        HashMap<Recipe, Double> result = model.recommendRecipes();
 
-        int a = result.size();
     }
 
 
@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
     {
         super.onResume();
 
-        ArrayList<Recipe> result = model.recommendRecipes();
+        HashMap<Recipe, Double> result = model.recommendRecipes();
 
         int a = result.size();
     }

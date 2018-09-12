@@ -7,6 +7,8 @@ import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Repositories.PantryR
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Repositories.RecipeRepository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class HomeViewModel
@@ -26,9 +28,9 @@ public class HomeViewModel
      * Returns a list of recipes, the recipes are sorted by percentage completion
      * @return
      */
-    public ArrayList<Recipe> recommendRecipes()
+    public LinkedHashMap<Recipe, Double> recommendRecipes()
     {
-        return new ArrayList<Recipe>(recipeEvaluator.getRecipeScoresHashMap().keySet());
+        return recipeEvaluator.getRecipeScoresHashMap();
     }
 
     /**
@@ -38,5 +40,12 @@ public class HomeViewModel
     public ArrayList<Recipe> discoverRecipes()
     {
         return new ArrayList<Recipe>();
+    }
+
+
+    public void toggleFavoriteStatusForRecipe(Recipe recipe, boolean status)
+    {
+        recipe.setFavorite(status);
+        recipeRepo.saveRecipes();
     }
 }
