@@ -5,20 +5,27 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.RecommendationRecyclerAdapter;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.HomeViewModel;
+import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements RecommendationRecyclerAdapter.ItemClickListener {
 
     private TextView mTextMessage;
     private HomeViewModel model;
+    private SuperRecyclerView recommendationRecyclerView;
+    private RecommendationRecyclerAdapter recommendationRecyclerAdapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,11 +59,15 @@ public class HomeActivity extends AppCompatActivity {
         model = new HomeViewModel();
 
         mTextMessage = (TextView) findViewById(R.id.message);
+        recommendationRecyclerView = (SuperRecyclerView) findViewById(R.id.recommendationRecyclerView);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        HashMap<Recipe, Double> result = model.recommendRecipes();
-
+        recommendationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this, model.recommendRecipes());
+        recommendationRecyclerAdapter.setOnClickListener(this);
+        recommendationRecyclerView.setAdapter(recommendationRecyclerAdapter);
+        recommendationRecyclerAdapter.notifyDataSetChanged();
     }
 
 
@@ -65,9 +76,14 @@ public class HomeActivity extends AppCompatActivity {
     {
         super.onResume();
 
-        HashMap<Recipe, Double> result = model.recommendRecipes();
-
-        int a = result.size();
+        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this, model.recommendRecipes());
+        recommendationRecyclerAdapter.setOnClickListener(this);
+        recommendationRecyclerView.setAdapter(recommendationRecyclerAdapter);
+        recommendationRecyclerAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+
+    }
 }
