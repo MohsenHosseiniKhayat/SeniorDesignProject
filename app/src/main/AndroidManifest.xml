@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cmpe195.mohsenhosseinikhayat.seniordesignproject">
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -21,14 +22,15 @@
         </activity>
         <activity
             android:name=".Activities.PantryAssistantActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activities.IngredientDetailActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activities.PantryManagerActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".Activities.RecipeSearchActivity"></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Activities.RecipeSearchActivity" />
+        <activity android:name=".Activities.RecipeDetailActivity"></activity>
     </application>
 
 </manifest>

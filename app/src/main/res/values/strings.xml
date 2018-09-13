@@ -23,4 +23,5 @@
         <item>"Include"</item>
         <item>"Exclude"</item>
     </string-array>
+    <string name="title_activity_recipe_detail">RecipeDetailActivity</string>
 </resources>
