@@ -9,7 +9,7 @@
         android:layout_weight="1"
         android:id="@+id/recipeNameTextView"
         android:layout_height="0dp" />
-    
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
