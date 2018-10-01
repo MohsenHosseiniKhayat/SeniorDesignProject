@@ -6,28 +6,23 @@
     android:orientation="horizontal">
 
 
-
-
-
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="wrap_content"
         android:layout_height="211dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
         app:cardCornerRadius="8dp">
 
         <RelativeLayout
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white_color">
 
 
             <ImageView
@@ -54,9 +49,10 @@
                 android:layout_marginTop="49dp"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textColor="@android:color/holo_green_light"
+                android:textAllCaps="false"
+                android:textColor="@color/cardview_dark_background"
                 android:textSize="26dp"
-                android:textStyle="bold" />
+                android:textStyle="bold|italic" />
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -65,15 +61,34 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="21dp"
-                android:progressTint="@color/colorPrimary"
+                android:progressTint="@color/colorPrimaryDark"
                 android:stepSize="1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="84dp"
+                android:layout_marginEnd="63dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView2"
+                android:layout_alignStart="@+id/buckysText"
+                android:text="95%"
+                android:textColor="@color/pantry_listening_color5"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
 
 
     </android.support.v7.widget.CardView>
-
 
 
 

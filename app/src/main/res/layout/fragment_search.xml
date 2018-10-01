@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.RecipeSearchActivity">
+    tools:context=".Fragments.PantryFragment">
 
-    <SearchView
+
+    <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/recipeSearchView"
-        android:iconifiedByDefault="false"
-        android:focusable="false"
-        android:queryHint="Search for recipes here"
-        android:layout_weight="2"/>
+        android:layout_height="match_parent"
+        android:background="@color/cardview_light_background">
 
-    <com.malinskiy.superrecyclerview.SuperRecyclerView
-        android:layout_width="match_parent"
-        android:layout_weight="8"
-        android:id="@+id/recipeSearchRecyclerView"
-        android:layout_height="0dp">
-    </com.malinskiy.superrecyclerview.SuperRecyclerView>
 
-</LinearLayout>
+        <fragment
+            android:id="@+id/SearchFieldFragment"
+            android:name="com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.SearchFieldFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="22dp"
+             />
+
+        <fragment
+            android:id="@+id/ListViewFragment"
+            android:name="com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.ListViewFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="77dp" />
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

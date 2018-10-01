@@ -86,4 +86,3 @@ public class RecommendationRecyclerAdapter extends BaseSwipeAdapter<Recommendati
         void onItemClick(View view, int position);
     }
 }
-
