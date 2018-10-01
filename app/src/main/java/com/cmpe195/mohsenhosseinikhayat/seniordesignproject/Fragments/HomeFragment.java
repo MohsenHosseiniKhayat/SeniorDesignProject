@@ -2,88 +2,52 @@ package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.RecommendationRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.RecommendationViewModel;
+import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class HomeFragment extends ListFragment {
+public class HomeFragment extends Fragment implements RecommendationRecyclerAdapter.ItemClickListener{
 
-
-    String [] players = {"Cheese Burger", "Lasagna", "Baked Mushrooms", "Potatoes","Salmon","Scallops", "Shrimps"};
-    int[] images = {R.mipmap.hamburger, R.mipmap.lasagna, R.mipmap.mushrooms,R.mipmap.potattoes,
-            R.mipmap.salmon,R.mipmap.scallops,R.mipmap.shrimp2};
-
-    ArrayList< HashMap<String,String>> data=  new ArrayList<HashMap<String,String>>();
-    SimpleAdapter adapter;
+    private RecommendationViewModel model;
+    private SuperRecyclerView recipeRecommendationSuperRecyclerView;
+    private LinkedHashMap<Recipe, Double> recommendedRecipes;
+    private RecommendationRecyclerAdapter recommendationRecyclerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
-        //MAP
-        HashMap<String,String> map = new HashMap<String,String>();
-
-
-        //FILL
-        for (int i=0; i<players.length; i++){
-
-            map = new HashMap<String,String>();
-            map.put("Player",players[i]);
-            map.put ("Image", Integer.toString (images[i]));
-
-            data.add(map);
-        }
-
-        //KEYs in MAP
-
-        String [] from = {"Player", "Image"};
-
-
-        //IDS of VIEWS
-        int [] to = {R.id.buckysText, R.id.buckysImage};
-
-
-        //ADAPTER
-        adapter = new SimpleAdapter(getActivity(), data, R.layout.custom_row,from,to);
-        setListAdapter(adapter);
+        View view = inflater.inflate(R.layout.fragment_home, container, true);
+        model = new RecommendationViewModel();
+        recommendedRecipes = model.recommendRecipes();
+        setupView(view);
 
 
 
-
-
-
-        // Inflate the layout for this fragment
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
 
-
+    public void setupView(View view)
+    {
+        recipeRecommendationSuperRecyclerView = (SuperRecyclerView) view.findViewById(R.id.recommendationSuperRecyclerView);
+        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this.getActivity(), recommendedRecipes);
+        recipeRecommendationSuperRecyclerView.setAdapter(recommendationRecyclerAdapter);
+        recipeRecommendationSuperRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        recommendationRecyclerAdapter.setOnClickListener(this);
+        recommendationRecyclerAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
-
-                Toast.makeText(getActivity(), data.get(pos).get("Player"),Toast.LENGTH_SHORT).show();
-
-            }
-        });
+    public void onItemClick(View view, int position) {
+        //Launch Recipe Detail View after user click
     }
-
 }

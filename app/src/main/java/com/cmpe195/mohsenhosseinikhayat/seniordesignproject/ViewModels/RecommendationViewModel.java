@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class HomeViewModel
+public class RecommendationViewModel
 {
     private RecipeRepository recipeRepo;
     private PantryRepository pantryRepo;
     private RecipeEvaluator recipeEvaluator;
 
-    public HomeViewModel()
+    public RecommendationViewModel()
     {
         recipeRepo = RecipeRepository.getInstance();
         pantryRepo = PantryRepository.getInstance();

@@ -40,7 +40,7 @@
 
 
             <TextView
-                android:id="@+id/buckysText"
+                android:id="@+id/recipeNameTextView"
                 android:layout_width="100dp"
                 android:layout_height="33dp"
                 android:layout_alignParentEnd="true"
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/textView2"
-                android:layout_alignStart="@+id/buckysText"
+                android:layout_alignStart="@+id/recipeNameTextView"
                 android:text="95%"
                 android:textColor="@color/pantry_listening_color5"
                 android:textSize="30sp"

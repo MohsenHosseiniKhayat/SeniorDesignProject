@@ -35,7 +35,7 @@
 
 
             <TextView
-                android:id="@+id/buckysText"
+                android:id="@+id/recipeNameTextView"
                 android:layout_width="100dp"
                 android:layout_height="33dp"
                 android:layout_alignParentEnd="true"

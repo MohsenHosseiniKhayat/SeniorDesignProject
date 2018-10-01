@@ -56,7 +56,7 @@ public class ListViewPantry extends ListFragment {
 
 
         //IDS of VIEWS
-        int [] to = {R.id.buckysText, R.id.buckysImage};
+        int [] to = {R.id.recipeNameTextView, R.id.buckysImage};
 
 
         //ADAPTER

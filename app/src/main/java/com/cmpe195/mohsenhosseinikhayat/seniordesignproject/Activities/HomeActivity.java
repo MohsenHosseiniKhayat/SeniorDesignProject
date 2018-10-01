@@ -22,12 +22,10 @@ import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private Toolbar mToolbar;
     FragmentTransaction fragmentTransaction;
-    NavigationView navigationView;
 
 
 
@@ -127,8 +125,6 @@ public class HomeActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
                         break;
-
-
 
                 }
                 return true;
