@@ -16,7 +16,7 @@ import com.vikramezhil.droidspeech.OnDSListener;
 import java.util.List;
 
 public class PantryAssistantActivity extends AppCompatActivity implements PantryAssistantRecyclerAdapter.ItemClickListener
-   , OnDSListener
+        , OnDSListener
 {
     private DroidSpeech droidSpeech;
     private Button speechButton;

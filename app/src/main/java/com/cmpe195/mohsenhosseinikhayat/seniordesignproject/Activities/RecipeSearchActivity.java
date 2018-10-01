@@ -69,7 +69,7 @@ public class RecipeSearchActivity extends AppCompatActivity {
     private void performSearch()
     {
         // This will be determined by a drop down or something else later
-        String searchOption = "Calories";
+        String searchOption = "Name";
         String queryString = recipeSearchView.getQuery().toString();
 
         switch (searchOption) {
