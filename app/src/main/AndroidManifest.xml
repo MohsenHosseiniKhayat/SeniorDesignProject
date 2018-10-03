@@ -26,11 +26,9 @@
         <activity
             android:name=".Activities.IngredientDetailActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Activities.PantryManagerActivity"
-            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Activities.RecipeSearchActivity" />
         <activity android:name=".Activities.RecipeDetailActivity"></activity>
+        <activity android:name=".Activities.PantryManagerActivity"></activity>
     </application>
 
 </manifest>

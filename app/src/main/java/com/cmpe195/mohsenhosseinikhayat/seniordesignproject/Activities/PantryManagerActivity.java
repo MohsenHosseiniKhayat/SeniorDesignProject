@@ -44,10 +44,10 @@ public class PantryManagerActivity extends AppCompatActivity implements PantryMa
     public void onResume()
     {
         super.onResume();
-        pantryManagerRecyclerAdapter = new PantryManagerRecyclerAdapter(this, viewModel.getMyIngredients());
+        /*pantryManagerRecyclerAdapter = new PantryManagerRecyclerAdapter(this, viewModel.getMyIngredients());
         pantryManagerRecyclerAdapter.setOnClickListener(this);
         pantryManagerRecyclerView.setAdapter(pantryManagerRecyclerAdapter);
-        pantryManagerRecyclerAdapter.notifyDataSetChanged();
+        pantryManagerRecyclerAdapter.notifyDataSetChanged();*/
     }
 
     /**

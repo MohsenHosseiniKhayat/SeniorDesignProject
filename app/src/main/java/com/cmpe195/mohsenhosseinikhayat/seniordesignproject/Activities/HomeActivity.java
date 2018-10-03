@@ -117,15 +117,6 @@ public class HomeActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
                         break;
-
-                    case(R.id.id_SearchActivity):
-                        intent = new Intent(HomeActivity.this, RecipeSearchActivity.class);
-                        startActivity(intent);
-                        getSupportActionBar().setTitle("Search Activity");
-                        menuItem.setChecked(true);
-                        mDrawerLayout.closeDrawers();
-                        break;
-
                 }
                 return true;
             }

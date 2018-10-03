@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment implements RecommendationRecyclerAdap
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    public void setupView(View view)
+    private void setupView(View view)
     {
         recipeRecommendationSuperRecyclerView = (SuperRecyclerView) view.findViewById(R.id.recommendationSuperRecyclerView);
         recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this.getActivity(), recommendedRecipes);

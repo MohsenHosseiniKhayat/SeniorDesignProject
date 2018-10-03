@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
@@ -18,6 +19,9 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
     private ArrayList<Ingredient> ingredientsList;
     private LayoutInflater inflater;
 
+    int[] images = {R.mipmap.hamburger, R.mipmap.lasagna, R.mipmap.mushrooms,R.mipmap.potattoes,
+            R.mipmap.salmon,R.mipmap.scallops,R.mipmap.shrimp2};
+
     public PantryManagerRecyclerAdapter(Context context, ArrayList<Ingredient> ingredientsList) {
         this.inflater = LayoutInflater.from(context);
         this.ingredientsList = ingredientsList;
@@ -26,7 +30,7 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = inflater.inflate(R.layout.pantry_manager_row_layout, parent, false);
+        View view = inflater.inflate(R.layout.pantry_row, parent, false);
 
         return new ViewHolder(view);
     }
@@ -39,6 +43,7 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
         holder.ingredientNameTextView.setText(currentIngredient.getName());
         holder.ingredientQuantityTextView.setText(String.valueOf(currentIngredient.getQuantity()));
         holder.ingredientMeasurementUnitTextView.setText(String.valueOf(currentIngredient.getMeasuringUnit().toString().toLowerCase()));
+        holder.ingredientImageView.setImageResource(images[position % 7]);
     }
 
     @Override
@@ -53,6 +58,7 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
         private TextView ingredientNameTextView;
         private TextView ingredientMeasurementUnitTextView;
         private TextView ingredientQuantityTextView;
+        private ImageView ingredientImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -60,6 +66,7 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
             ingredientNameTextView = (TextView) itemView.findViewById(R.id.ingredientNameTextView);
             ingredientMeasurementUnitTextView = (TextView) itemView.findViewById(R.id.ingredientMeasurementUnitTextView);
             ingredientQuantityTextView = (TextView) itemView.findViewById(R.id.ingredientQuantityTextView);
+            ingredientImageView = (ImageView) itemView.findViewById(R.id.ingredientImageView);
             itemView.setOnClickListener(this);
         }
 
