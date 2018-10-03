@@ -44,6 +44,6 @@ public class RecipeIngredientsGridViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        View view = inflater.inflate(R.layout.gro)
+        return null;
     }
 }
