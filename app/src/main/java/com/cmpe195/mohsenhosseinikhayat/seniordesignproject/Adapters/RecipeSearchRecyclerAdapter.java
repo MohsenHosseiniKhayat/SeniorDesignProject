@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
@@ -18,6 +20,8 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
     private ItemClickListener itemClickListener;
     private ArrayList<Recipe> recipesList;
     private LayoutInflater inflater;
+    private int[] images = {R.mipmap.hamburger, R.mipmap.lasagna, R.mipmap.mushrooms,R.mipmap.potattoes,
+            R.mipmap.salmon,R.mipmap.scallops,R.mipmap.shrimp2};
 
 
     public RecipeSearchRecyclerAdapter(Context context, ArrayList<Recipe> recipes)
@@ -33,12 +37,15 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
 
         holder.nameTextView.setText(currentRecipe.getName());
         holder.descriptionTextView.setText(currentRecipe.getDescription());
+        holder.caloriesTextView.setText(currentRecipe.getCalories());
+        holder.imageView.setImageResource(images[position % 7]);
+        holder.ratingBar.setNumStars(4);
         this.setOnClickListener(itemClickListener);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.recipe_search_row_layout, parent, false);
+        View view = inflater.inflate(R.layout.recipe_search_cardview_row, parent, false);
 
         return new ViewHolder(view);
     }
@@ -53,6 +60,9 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
     {
         private TextView nameTextView;
         private TextView descriptionTextView;
+        private TextView caloriesTextView;
+        private RatingBar ratingBar;
+        private ImageView imageView;
 
         public ViewHolder(View itemView)
         {
@@ -60,6 +70,10 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
 
             nameTextView = (TextView) itemView.findViewById(R.id.recipeNameTextView);
             descriptionTextView = (TextView) itemView.findViewById(R.id.recipeDescriptionTextView);
+            caloriesTextView = (TextView) itemView.findViewById(R.id.recipeCaloriesTextView);
+            imageView = (ImageView) itemView.findViewById(R.id.recipeImageView);
+            ratingBar = (RatingBar) itemView.findViewById(R.id.recipeRatingBar);
+
         }
 
         @Override

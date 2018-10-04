@@ -66,12 +66,12 @@ public class PantryManagerActivity extends AppCompatActivity implements PantryMa
             }
         });
 
-        pantryManagerRecyclerView = (RecyclerView) findViewById(R.id.pantryManagerRecyclerView);
+        /*pantryManagerRecyclerView = (RecyclerView) findViewById(R.id.pantryManagerRecyclerView);
         pantryManagerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         pantryManagerRecyclerAdapter = new PantryManagerRecyclerAdapter(this, viewModel.getMyIngredients());
         pantryManagerRecyclerAdapter.setOnClickListener(this);
         pantryManagerRecyclerView.setAdapter(pantryManagerRecyclerAdapter);
-        pantryManagerRecyclerAdapter.notifyDataSetChanged();
+        pantryManagerRecyclerAdapter.notifyDataSetChanged();*/
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
