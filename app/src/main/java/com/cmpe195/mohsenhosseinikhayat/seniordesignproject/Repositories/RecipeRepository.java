@@ -87,7 +87,14 @@ public class RecipeRepository {
         {
             Recipe currentRecipe = allRecipes.get(i);
 
-            if (Arrays.asList(currentRecipe.getIngredients()).contains(queryString))
+            ArrayList<Ingredient> allIngredients = new ArrayList<Ingredient>((currentRecipe.getIngredients().keySet()));
+            ArrayList<String> allIngredientsNames = new ArrayList<String>();
+            for (int j = 0; j < allIngredients.size(); j++)
+            {
+                allIngredientsNames.add(allIngredients.get(j).getName());
+            }
+
+            if (allIngredientsNames.contains(queryString))
             {
                 results.add(currentRecipe);
             }

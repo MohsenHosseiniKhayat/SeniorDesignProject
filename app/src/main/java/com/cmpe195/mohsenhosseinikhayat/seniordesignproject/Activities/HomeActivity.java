@@ -2,88 +2,138 @@ package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
-import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.RecommendationRecyclerAdapter;
-import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.PantryAssistantFragment;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.PantryManagerFragment;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.RecipeBookFragment;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.RecipeSearchFragment;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.RecommendationFragment;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments.SettingsFragment;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
-import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.HomeViewModel;
-import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+public class HomeActivity extends AppCompatActivity {
 
-public class HomeActivity extends AppCompatActivity implements RecommendationRecyclerAdapter.ItemClickListener {
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
+    private Toolbar mToolbar;
+    FragmentTransaction fragmentTransaction;
 
-    private TextView mTextMessage;
-    private HomeViewModel model;
-    private SuperRecyclerView recommendationRecyclerView;
-    private RecommendationRecyclerAdapter recommendationRecyclerAdapter;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Intent intent;
-
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_search);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_search);
-                    intent = new Intent(HomeActivity.this, RecipeSearchActivity.class);
-                    startActivity(intent);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_pantry);
-                    intent = new Intent(HomeActivity.this, PantryManagerActivity.class);
-                    startActivity(intent);
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        model = new HomeViewModel();
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        recommendationRecyclerView = (SuperRecyclerView) findViewById(R.id.recommendationRecyclerView);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        recommendationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this, model.recommendRecipes());
-        recommendationRecyclerAdapter.setOnClickListener(this);
-        recommendationRecyclerView.setAdapter(recommendationRecyclerAdapter);
-        recommendationRecyclerAdapter.notifyDataSetChanged();
+
+        mToolbar = (Toolbar) findViewById(R.id.nav_action);
+        setSupportActionBar(mToolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
+
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, new RecommendationFragment());
+        fragmentTransaction.commit();
+        getSupportActionBar().setTitle("Home");
+
+
+        NavigationView nv = (NavigationView)findViewById(R.id.nv1);
+
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                switch (menuItem.getItemId()) {
+                    case(R.id.home_id):
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container , new RecommendationFragment());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Home");
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+                    case(R.id.id_pantry):
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container , new PantryManagerFragment());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Pantry");
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+
+                    case(R.id.id_Search):
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container , new RecipeSearchFragment());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Search Recipe");
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+                    case(R.id.id_recipeBook):
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container , new RecipeBookFragment());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Recipe Book");
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+                    case(R.id.id_pantryAssistant):
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container , new PantryAssistantFragment());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Pantry Assistant");
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+                    case(R.id.id_settings):
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container , new SettingsFragment());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Settings");
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        break;
+
+                }
+                return true;
+            }
+        });
+
     }
 
 
     @Override
-    public void onResume()
-    {
-        super.onResume();
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this, model.recommendRecipes());
-        recommendationRecyclerAdapter.setOnClickListener(this);
-        recommendationRecyclerView.setAdapter(recommendationRecyclerAdapter);
-        recommendationRecyclerAdapter.notifyDataSetChanged();
-    }
 
-    @Override
-    public void onItemClick(View view, int position) {
+        if (mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
+
 }

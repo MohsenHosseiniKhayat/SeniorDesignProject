@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
@@ -19,6 +21,8 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
     private ArrayList<Recipe> recipesList;
     private LayoutInflater inflater;
 
+    int[] images = {R.mipmap.hamburger, R.mipmap.lasagna, R.mipmap.mushrooms,R.mipmap.potattoes,
+            R.mipmap.salmon,R.mipmap.scallops,R.mipmap.shrimp2};
 
     public RecipeSearchRecyclerAdapter(Context context, ArrayList<Recipe> recipes)
     {
@@ -33,6 +37,9 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
 
         holder.nameTextView.setText(currentRecipe.getName());
         holder.descriptionTextView.setText(currentRecipe.getDescription());
+        holder.ratingBar.setNumStars(4);
+        holder.caloriesTextView.setText(String.valueOf(currentRecipe.getCalories()));
+        holder.imageView.setImageResource(images[position % images.length]);
         this.setOnClickListener(itemClickListener);
     }
 
@@ -53,13 +60,19 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
     {
         private TextView nameTextView;
         private TextView descriptionTextView;
+        private TextView caloriesTextView;
+        private ImageView imageView;
+        private RatingBar ratingBar;
 
-        public ViewHolder(View itemView)
+        private ViewHolder(View itemView)
         {
             super(itemView);
 
             nameTextView = (TextView) itemView.findViewById(R.id.recipeNameTextView);
             descriptionTextView = (TextView) itemView.findViewById(R.id.recipeDescriptionTextView);
+            caloriesTextView = (TextView) itemView.findViewById(R.id.recipeCaloriesTextView);
+            imageView = (ImageView) itemView.findViewById(R.id.recipeImageView);
+            ratingBar = (RatingBar) itemView.findViewById(R.id.recipeRatingBar);
         }
 
         @Override
