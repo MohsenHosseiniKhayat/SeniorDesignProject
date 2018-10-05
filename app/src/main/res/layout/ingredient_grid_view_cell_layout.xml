@@ -4,5 +4,7 @@
     android:layout_height="match_parent">
 
 
+    <!-- TODO: Pr #3 Create layout for ingredients in recipe, used in recipe details page-->
+
 
 </LinearLayout>

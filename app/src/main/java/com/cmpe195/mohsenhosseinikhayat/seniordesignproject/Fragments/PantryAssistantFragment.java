@@ -1,47 +1,54 @@
-package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities;
+package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.PantryAssistantRecyclerAdapter;
-import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryAssistantViewModel;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryAssistantViewModel;
 import com.vikramezhil.droidspeech.DroidSpeech;
 import com.vikramezhil.droidspeech.OnDSListener;
 
 import java.util.List;
 
-public class PantryAssistantActivity extends AppCompatActivity implements PantryAssistantRecyclerAdapter.ItemClickListener
-   , OnDSListener
+public class PantryAssistantFragment extends Fragment implements PantryAssistantRecyclerAdapter.ItemClickListener, OnDSListener
 {
     private DroidSpeech droidSpeech;
     private Button speechButton;
     private Button confirmButton;
-    private PantryAssistantViewModel viewModel;
+    private PantryAssistantViewModel model;
     private RecyclerView pantryReceiptRecyclerView;
     private PantryAssistantRecyclerAdapter pantryReceiptArrayAdapter;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        viewModel = new PantryAssistantViewModel();
-        setupView();
+    public PantryAssistantFragment()
+    {
+        // Required empty public constructor
     }
 
-    /**
-     * Performs view setup
-     */
-    private void setupView()
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        setContentView(R.layout.activity_pantry_assistant);
+        View view = inflater.inflate(R.layout.fragment_pantry_assistant, container, false);
+        model = new PantryAssistantViewModel();
+        setupView(view);
 
+        return view;
+    }
+
+    private void setupView(View view)
+    {
         //Setup droidSpeech
-        droidSpeech = new DroidSpeech(this, null, viewModel.getPossibleWords());
+        droidSpeech = new DroidSpeech(this.getActivity(), null, model.getPossibleWords());
         droidSpeech.setOnDroidSpeechListener(this);
         droidSpeech.setListeningMsg("Listening for ingredients");
         droidSpeech.setContinuousSpeechRecognition(true);
@@ -50,7 +57,7 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
         droidSpeech.setShowRecognitionProgressView(true);
 
         //Setup speechButton
-        speechButton = (Button) findViewById(R.id.speechButton);
+        speechButton = (Button) view.findViewById(R.id.speechButton);
         speechButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +66,7 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
         });
 
         //Setup confirmButton
-        confirmButton = (Button) findViewById(R.id.confirmButton);
+        confirmButton = (Button) view.findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,10 +75,10 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
         });
 
         //Setup pantryReceiptRecyclerView and adapter
-        pantryReceiptRecyclerView = (RecyclerView) findViewById(R.id.pantryReceiptRecyclerView);
+        pantryReceiptRecyclerView = (RecyclerView) view.findViewById(R.id.pantryReceiptRecyclerView);
         pantryReceiptArrayAdapter = new PantryAssistantRecyclerAdapter
-                (this, viewModel.getIngredientCommands(), viewModel);
-        pantryReceiptRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+                (this.getActivity(), model.getIngredientCommands(), model);
+        pantryReceiptRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         pantryReceiptRecyclerView.setAdapter(pantryReceiptArrayAdapter);
         pantryReceiptArrayAdapter.setClickListener(this);
         pantryReceiptArrayAdapter.notifyDataSetChanged();
@@ -85,7 +92,7 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                viewModel.deleteIngredientCommand(viewHolder.getAdapterPosition());
+                model.deleteIngredientCommand(viewHolder.getAdapterPosition());
                 pantryReceiptArrayAdapter.notifyDataSetChanged();
             }
         };
@@ -99,9 +106,9 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
      * Handler for confirmButton
      */
     private void confirmButtonClicked() {
-        viewModel.confirmIngredientAddition();
+        model.confirmIngredientAddition();
         pantryReceiptArrayAdapter = new PantryAssistantRecyclerAdapter
-                (this, viewModel.getIngredientCommands(), viewModel);
+                (this.getActivity(), model.getIngredientCommands(), model);
         pantryReceiptRecyclerView.setAdapter(pantryReceiptArrayAdapter);
         pantryReceiptArrayAdapter.setClickListener(this);
         pantryReceiptArrayAdapter.notifyDataSetChanged();
@@ -135,9 +142,9 @@ public class PantryAssistantActivity extends AppCompatActivity implements Pantry
     public void onDroidSpeechFinalResult(String finalSpeechResult) {
 
         //Parse speech, create an adapter and update the list view
-        viewModel.parseSpeech(finalSpeechResult);
+        model.parseSpeech(finalSpeechResult);
         pantryReceiptArrayAdapter = new PantryAssistantRecyclerAdapter
-                (this, viewModel.getIngredientCommands(), viewModel);
+                (this.getActivity(), model.getIngredientCommands(), model);
         pantryReceiptRecyclerView.setAdapter(pantryReceiptArrayAdapter);
         pantryReceiptArrayAdapter.setClickListener(this);
         pantryReceiptArrayAdapter.notifyDataSetChanged();
