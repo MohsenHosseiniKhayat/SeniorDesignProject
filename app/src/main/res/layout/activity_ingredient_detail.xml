@@ -23,4 +23,24 @@
         android:id="@+id/ingredientMeasurementUnitTextView"
         android:layout_height="0dp" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/ingredientImageView"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/seekBarHint"
+        android:text="Alert me when I have less than this quantity"/>
+
+    <app.minimize.com.seek_bar_compat.SeekBarCompat
+        android:id="@+id/alertSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:maxHeight="300sp"/>
+
 </LinearLayout>

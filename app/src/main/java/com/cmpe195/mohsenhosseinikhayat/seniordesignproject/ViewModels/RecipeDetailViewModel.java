@@ -33,7 +33,7 @@ public class RecipeDetailViewModel {
         return recipe.getIngredients();
     }
 
-    public String getRecipeDescription()
+    public String getDescription()
     {
         return recipe.getDescription();
     }
@@ -69,6 +69,10 @@ public class RecipeDetailViewModel {
         mealType.append(recipe.getMealType().toString().substring(1));
 
         return mealType.toString();
+    }
+
+    public String getRecipeName() {
+        return recipeName;
     }
 
     public Double getOverallCompletion() {

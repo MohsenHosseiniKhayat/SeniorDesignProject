@@ -1,5 +1,6 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities.RecipeDetailActivity;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.RecipeSearchRecyclerAdapter;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.MeasurementUnit;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
@@ -22,8 +24,7 @@ import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
 import java.util.ArrayList;
 
-public class RecipeSearchFragment extends Fragment
-{
+public class RecipeSearchFragment extends Fragment implements RecipeSearchRecyclerAdapter.ItemClickListener {
     private SearchView recipeSearchView;
     private SuperRecyclerView recipeSearchRecyclerView;
     private RecipeSearchRecyclerAdapter recipeSearchRecyclerAdapter;
@@ -76,6 +77,7 @@ public class RecipeSearchFragment extends Fragment
         recipeSearchRecyclerAdapter = new RecipeSearchRecyclerAdapter(this.getActivity(), resultRecipes);
         recipeSearchRecyclerView.setAdapter(recipeSearchRecyclerAdapter);
         recipeSearchRecyclerAdapter.notifyDataSetChanged();
+        recipeSearchRecyclerAdapter.setOnClickListener(this);
 
 
         recipeSearchFilterSpinner = (Spinner) view.findViewById(R.id.recipeSearchFilterSpinner);
@@ -128,5 +130,12 @@ public class RecipeSearchFragment extends Fragment
         recipeSearchRecyclerAdapter = new RecipeSearchRecyclerAdapter(this.getActivity(), resultRecipes);
         recipeSearchRecyclerAdapter.notifyDataSetChanged();
         recipeSearchRecyclerView.setAdapter(recipeSearchRecyclerAdapter);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Intent intent = new Intent(this.getActivity(), RecipeDetailActivity.class);
+        intent.putExtra("recipeName", resultRecipes.get(position).getName());
+        this.getActivity().startActivity(intent);
     }
 }

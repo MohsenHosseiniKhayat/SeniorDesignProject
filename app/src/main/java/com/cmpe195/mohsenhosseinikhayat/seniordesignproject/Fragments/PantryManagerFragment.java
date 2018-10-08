@@ -1,5 +1,6 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities.IngredientDetailActivity;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.PantryManagerRecyclerAdapter;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryManagerViewModel;
@@ -81,5 +83,9 @@ public class PantryManagerFragment extends Fragment implements PantryManagerRecy
     @Override
     public void onItemClick(View view, int position) {
         //TODO: Redirect user to ingredient detail
+        Intent intent = new Intent(this.getActivity(), IngredientDetailActivity.class);
+        intent.putExtra("ingredientName", model.getMyIngredients().get(position).getName());
+        this.getActivity().startActivity(intent);
+
     }
 }

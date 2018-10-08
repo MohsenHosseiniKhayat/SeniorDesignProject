@@ -81,6 +81,7 @@ public class RecommendationRecyclerAdapter extends BaseSwipeAdapter<Recommendati
             ratingBar = (RatingBar) itemView.findViewById(R.id.recipeRatingBar);
             imageView = (ImageView) itemView.findViewById(R.id.recipeImageView);
             caloriesTextView = (TextView) itemView.findViewById(R.id.recipeCaloriesTextView);
+            itemView.setOnClickListener(this);
         }
 
         @Override

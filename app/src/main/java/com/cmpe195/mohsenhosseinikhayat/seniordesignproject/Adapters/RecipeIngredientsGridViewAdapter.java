@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
@@ -38,12 +39,20 @@ public class RecipeIngredientsGridViewAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View view, ViewGroup viewGroup)
+    {
+        View cellView = inflater.inflate(R.layout.ingredient_grid_view_cell_layout, viewGroup,false);
 
-        return null;
+        TextView nameTextView =  (TextView) cellView.findViewById(R.id.ingredientNameTextView);
+        TextView quantityTextView =  (TextView) cellView.findViewById(R.id.ingredientQuantityTextView);
+
+        nameTextView.setText(ingredientsList.get(i).getName());
+        quantityTextView.setText(String.valueOf(ingredientsList.get(i).getQuantity()));
+
+        return cellView;
     }
 }
