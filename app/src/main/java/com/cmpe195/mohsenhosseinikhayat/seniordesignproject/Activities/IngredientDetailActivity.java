@@ -2,12 +2,9 @@ package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.DragEvent;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.IngredientDetailViewModel;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.xw.repo.BubbleSeekBar;
@@ -33,7 +30,7 @@ public class IngredientDetailActivity extends AppCompatActivity {
      * Retrieves views and performs their setup
      */
     private void setupView() {
-        setContentView(R.layout.activity_ingredient_detail);
+        setContentView(R.layout.activity_ingredient_detail_junk);
         nameTextView = (TextView) findViewById(R.id.ingredientNameTextView);
         measurementUnitTextView = (TextView) findViewById(R.id.ingredientMeasurementUnitTextView);
         quantityTextView = (TextView) findViewById(R.id.ingredientQuantityTextView);
