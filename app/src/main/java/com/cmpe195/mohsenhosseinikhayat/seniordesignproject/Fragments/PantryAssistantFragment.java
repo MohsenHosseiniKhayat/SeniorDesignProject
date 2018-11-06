@@ -121,6 +121,12 @@ public class PantryAssistantFragment extends Fragment implements PantryAssistant
     public void speechButtonClicked()
     {
         droidSpeech.startDroidSpeechRecognition();
+        model.parseSpeech("Banana");
+        pantryReceiptArrayAdapter = new PantryAssistantRecyclerAdapter
+                (this.getActivity(), model.getIngredientCommands(), model);
+        pantryReceiptRecyclerView.setAdapter(pantryReceiptArrayAdapter);
+        pantryReceiptArrayAdapter.setClickListener(this);
+        pantryReceiptArrayAdapter.notifyDataSetChanged();
     }
 
 

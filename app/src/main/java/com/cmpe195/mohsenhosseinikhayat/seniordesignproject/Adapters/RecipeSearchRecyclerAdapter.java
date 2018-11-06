@@ -73,6 +73,7 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
             caloriesTextView = (TextView) itemView.findViewById(R.id.recipeCaloriesTextView);
             imageView = (ImageView) itemView.findViewById(R.id.recipeImageView);
             ratingBar = (RatingBar) itemView.findViewById(R.id.recipeRatingBar);
+            itemView.setOnClickListener(this);
         }
 
         @Override

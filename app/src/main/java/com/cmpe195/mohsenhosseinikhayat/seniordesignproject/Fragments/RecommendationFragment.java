@@ -1,5 +1,6 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,16 +14,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities.RecipeDetailActivity;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.RecommendationRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.HomeViewModel;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
+
+import java.util.LinkedHashMap;
 
 public class RecommendationFragment extends Fragment implements RecommendationRecyclerAdapter.ItemClickListener {
     private HomeViewModel model;
 
     private SuperRecyclerView recommendationRecyclerView;
     private RecommendationRecyclerAdapter recommendationRecyclerAdapter;
+    private LinkedHashMap<Recipe, Double> recipes;
 
     public RecommendationFragment()
     {
@@ -36,7 +43,6 @@ public class RecommendationFragment extends Fragment implements RecommendationRe
     {
         View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
         model = new HomeViewModel();
-
         setupView(view);
 
         return view;
@@ -45,19 +51,9 @@ public class RecommendationFragment extends Fragment implements RecommendationRe
     public void setupView(View view)
     {
         recommendationRecyclerView = (SuperRecyclerView) view.findViewById(R.id.recommendationRecyclerView);
-        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this.getActivity(), model.recommendRecipes());
+        recipes = model.recommendRecipes();
+        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this.getActivity(), recipes);
         recommendationRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        recommendationRecyclerAdapter.setOnClickListener(this);
-        recommendationRecyclerView.setAdapter(recommendationRecyclerAdapter);
-        recommendationRecyclerAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-
-        recommendationRecyclerAdapter = new RecommendationRecyclerAdapter(this.getActivity(), model.recommendRecipes());
         recommendationRecyclerAdapter.setOnClickListener(this);
         recommendationRecyclerView.setAdapter(recommendationRecyclerAdapter);
         recommendationRecyclerAdapter.notifyDataSetChanged();
@@ -66,5 +62,9 @@ public class RecommendationFragment extends Fragment implements RecommendationRe
     @Override
     public void onItemClick(View view, int position) {
         //TODO: User should see recipe detail
+        Intent intent = new Intent(this.getActivity(), RecipeDetailActivity.class);
+        String selectedRecipeName = recipes.keySet().toArray(new Recipe[0])[0].getName();
+        intent.putExtra("recipeName", selectedRecipeName);
+        this.getActivity().startActivity(intent);
     }
 }
