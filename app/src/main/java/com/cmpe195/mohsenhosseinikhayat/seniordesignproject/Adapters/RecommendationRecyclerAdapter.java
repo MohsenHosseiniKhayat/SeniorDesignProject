@@ -42,11 +42,7 @@ public class RecommendationRecyclerAdapter extends BaseSwipeAdapter<Recommendati
         holder.nameTextView.setText(currentRecipe.getName());
         holder.descriptionTextView.setText(currentRecipe.getDescription());
         holder.completionTextView.setText(ingredients.get(currentRecipe).toString());
-<<<<<<< HEAD
-        holder.ratingBar.setNumStars(5);
-=======
         holder.ratingBar.setNumStars(3);
->>>>>>> 39fa1a4e44cbbbe62605e5d5fd745a7a11dee7f1
         holder.caloriesTextView.setText(String.valueOf(currentRecipe.getCalories()));
         holder.imageView.setImageResource(images[position % images.length]);
         this.setOnClickListener(itemClickListener);
