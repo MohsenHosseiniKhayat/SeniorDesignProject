@@ -1,5 +1,6 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities.SignInActivity;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.SettingsRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.CustomViews.Animations;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,6 +21,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
+import com.willowtreeapps.spruce.Spruce;
+import com.willowtreeapps.spruce.animation.DefaultAnimations;
+import com.willowtreeapps.spruce.sort.DefaultSort;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -47,6 +52,8 @@ public class SettingsFragment extends Fragment implements SettingsRecyclerAdapte
         settingsSuperRecyclerView.setAdapter(settingsRecyclerAdapter);
         settingsRecyclerAdapter.setClickListener(this);
         settingsRecyclerAdapter.notifyDataSetChanged();
+
+        Animations.AnimateRecyclerView(settingsSuperRecyclerView);
 
     }
 

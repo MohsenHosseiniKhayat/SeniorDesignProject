@@ -1,5 +1,6 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,14 +12,19 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.PantryAssistantRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.CustomViews.Animations;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryAssistantViewModel;
 import com.skyfishjy.library.RippleBackground;
 import com.vikramezhil.droidspeech.DroidSpeech;
 import com.vikramezhil.droidspeech.OnDSListener;
+import com.willowtreeapps.spruce.Spruce;
+import com.willowtreeapps.spruce.animation.DefaultAnimations;
+import com.willowtreeapps.spruce.sort.DefaultSort;
 
 import java.util.List;
 
@@ -105,6 +111,8 @@ public class PantryAssistantFragment extends Fragment implements PantryAssistant
         itemTouchHelper.attachToRecyclerView(pantryReceiptRecyclerView);
 
         speechButtonRippleBackground = view.findViewById(R.id.speechButtonRippleBackground);
+
+        Animations.AnimateRecyclerView(pantryReceiptRecyclerView);
     }
 
     /**
