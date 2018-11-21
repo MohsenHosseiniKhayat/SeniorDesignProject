@@ -63,7 +63,7 @@ public class PantryAssistantFragment extends Fragment implements PantryAssistant
         droidSpeech.setContinuousSpeechRecognition(true);
         droidSpeech.setPreferredLanguage("en-US");
         droidSpeech.setOneStepVerifyConfirmTextColor(R.color.white_color);
-        droidSpeech.setShowRecognitionProgressView(true);
+        droidSpeech.setShowRecognitionProgressView(false);
 
         //Setup speechButton
         speechButton = (FloatingActionButton) view.findViewById(R.id.speechButton);

@@ -786,7 +786,7 @@ public class DroidSpeech
                                 else
                                 {
                                     // Sending an update with the droid speech final result
-                                    droidSpeechListener.onDroidSpeechFinalResult(droidSpeechFinalResult);
+                                    droidSpeechListener.onDroidSpeechFinalResult(droidSpeechFinalResult.substring(0, droidSpeechFinalResult.length() - 1));
                                 }
 
                                 if(dsProperties.continuousSpeechRecognition)

@@ -9,17 +9,17 @@ import java.util.List;
 
 public class BogusGenerator
 {
-    public static ArrayList<Recipe> generateBogus()
+    public static ArrayList<Recipe> generateBogusRecipes()
     {
         ArrayList<Recipe> recipes = new ArrayList<>();
 
-        PantryRepository pr = new PantryRepository();
+        PantryRepository pr = PantryRepository.getInstance();
 
         LinkedHashMap<Ingredient, Double> hashmap1 = new LinkedHashMap<Ingredient, Double>();
         hashmap1.put(pr.getIngredientWithName("garlic"), 100.0);
         hashmap1.put(pr.getIngredientWithName("lime"), 1.0);
         hashmap1.put(pr.getIngredientWithName("soy"), 2.0);
-        hashmap1.put(pr.getIngredientWithName("mayonaise"), 2.0);
+        hashmap1.put(pr.getIngredientWithName("mayonnaise"), 2.0);
         hashmap1.put(pr.getIngredientWithName("chicken thigh"), 2.0);
         hashmap1.put(pr.getIngredientWithName("salt"), 1.0);
         hashmap1.put(pr.getIngredientWithName("pepper"), 1.0);
@@ -48,7 +48,7 @@ public class BogusGenerator
         hashmap2.put(pr.getIngredientWithName("onion"), 2.0);
         hashmap2.put(pr.getIngredientWithName("cilantro"), 2.0);
         hashmap2.put(pr.getIngredientWithName("milk"), 2.0);
-        hashmap2.put(pr.getIngredientWithName("tomatoes"), 1.0);
+        hashmap2.put(pr.getIngredientWithName("tomato"), 1.0);
         hashmap2.put(pr.getIngredientWithName("masala"), 1.0);
         hashmap2.put(pr.getIngredientWithName("water"), 3.0);
 
@@ -70,11 +70,11 @@ public class BogusGenerator
 
         LinkedHashMap<Ingredient, Double> hashmap3 = new LinkedHashMap<Ingredient, Double>();
         hashmap3.put(pr.getIngredientWithName("chile"), 2.0);
-        hashmap3.put(pr.getIngredientWithName("chicken drumsticks"), 1.0);
+        hashmap3.put(pr.getIngredientWithName("chicken drumstick"), 1.0);
         hashmap3.put(pr.getIngredientWithName("onion"), 2.0);
         hashmap3.put(pr.getIngredientWithName("cilantro"), 2.0);
         hashmap3.put(pr.getIngredientWithName("milk"), 2.0);
-        hashmap3.put(pr.getIngredientWithName("tomatoes"), 1.0);
+        hashmap3.put(pr.getIngredientWithName("tomato"), 1.0);
         hashmap3.put(pr.getIngredientWithName("masala"), 1.0);
         hashmap3.put(pr.getIngredientWithName("water"), 3.0);
 
@@ -563,7 +563,7 @@ public class BogusGenerator
         ingredients.add(new Ingredient("dill", MeasurementUnit.TABLESPOON, 0));
         ingredients.add(new Ingredient("cucumber", MeasurementUnit.GRAM, 0));
         ingredients.add(new Ingredient("yogurt", MeasurementUnit.OUNCE, 0));
-        ingredients.add(new Ingredient("tortillas", MeasurementUnit.GRAM, 0));
+        ingredients.add(new Ingredient("tortilla", MeasurementUnit.GRAM, 0));
         ingredients.add(new Ingredient("lasagna noodles", MeasurementUnit.GRAM, 0));
         ingredients.add(new Ingredient("oregano", MeasurementUnit.TEASPOON, 0));
         ingredients.add(new Ingredient("egg", MeasurementUnit.PC, 0));
@@ -582,11 +582,13 @@ public class BogusGenerator
         ingredients.add(new Ingredient("jalepeno", MeasurementUnit.OUNCE, 0));
         ingredients.add(new Ingredient("sushi rice", MeasurementUnit.CUP, 0));
         ingredients.add(new Ingredient("salmon", MeasurementUnit.OUNCE, 0));
-        ingredients.add(new Ingredient("sea weed ", MeasurementUnit.GRAM, 0));
+        ingredients.add(new Ingredient("sea weed", MeasurementUnit.GRAM, 0));
         ingredients.add(new Ingredient("avocado", MeasurementUnit.POUND, 0));
         ingredients.add(new Ingredient("wasabi", MeasurementUnit.TABLESPOON, 0));
         ingredients.add(new Ingredient("potato", MeasurementUnit.POUND, 0));
         ingredients.add(new Ingredient("paprika", MeasurementUnit.TEASPOON, 0));
+        ingredients.add(new Ingredient("chicken", MeasurementUnit.POUND, 0));
+        ingredients.add(new Ingredient("chile", MeasurementUnit.TEASPOON, 0));
 
 
         return ingredients;
