@@ -1,15 +1,14 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Repositories;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.BogusGenerator;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.MealType;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Random;
-import java.util.concurrent.RecursiveAction;
 
 public class RecipeRepository {
     private static RecipeRepository ourInstance = new RecipeRepository();
@@ -152,7 +151,7 @@ public class RecipeRepository {
      */
     private Recipe[] FakeRecipesForMohsen()
     {
-        Recipe recipe1 = new Recipe("chicken shawarma", "shawarma with chicken", tempCreateIngredientHashMaps(new String[] {"chicken", "banana"}),
+        /*Recipe recipe1 = new Recipe("chicken shawarma", "shawarma with chicken", tempCreateIngredientHashMaps(new String[] {"chicken", "banana"}),
                 new String[] {"step1", "step2"}, 2, new String [] {"tag1"}, MealType.LUNCH, 300);
 
         Recipe recipe2 = new Recipe("beef shawarma", "shawarma with beef", tempCreateIngredientHashMaps(new String[] {"beef", "banana"}),
@@ -182,7 +181,9 @@ public class RecipeRepository {
         Recipe recipe10 = new Recipe("fish and chips", "fish and chips", tempCreateIngredientHashMaps(new String[] {"fish", "onion", "potato"}),
                 new String[] {"step5", "step3", "step7"}, 4, new String [] {"tag3", "tag1"}, MealType.LUNCH, 385);
 
-        return new Recipe[] {recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8, recipe9, recipe10};
+        //return new Recipe[] {recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8, recipe9, recipe10};*/
+
+        return BogusGenerator.generateBogusRecipes().toArray(new Recipe[0]);
     }
 
 

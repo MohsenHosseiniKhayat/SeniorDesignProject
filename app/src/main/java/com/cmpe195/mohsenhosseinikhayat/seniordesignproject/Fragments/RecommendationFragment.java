@@ -12,10 +12,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.SearchView;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities.RecipeDetailActivity;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.RecommendationRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.CustomViews.Animations;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
@@ -57,11 +59,13 @@ public class RecommendationFragment extends Fragment implements RecommendationRe
         recommendationRecyclerAdapter.setOnClickListener(this);
         recommendationRecyclerView.setAdapter(recommendationRecyclerAdapter);
         recommendationRecyclerAdapter.notifyDataSetChanged();
+
+
+        Animations.AnimateRecyclerView(recommendationRecyclerView);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        //TODO: User should see recipe detail
         Intent intent = new Intent(this.getActivity(), RecipeDetailActivity.class);
         String selectedRecipeName = recipes.keySet().toArray(new Recipe[0])[0].getName();
         intent.putExtra("recipeName", selectedRecipeName);

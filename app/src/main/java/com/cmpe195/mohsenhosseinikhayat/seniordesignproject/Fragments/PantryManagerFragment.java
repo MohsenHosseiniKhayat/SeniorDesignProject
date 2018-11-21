@@ -11,10 +11,12 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Activities.IngredientDetailActivity;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.PantryManagerRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.CustomViews.Animations;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryManagerViewModel;
 
@@ -78,6 +80,8 @@ public class PantryManagerFragment extends Fragment implements PantryManagerRecy
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
 
         itemTouchHelper.attachToRecyclerView(pantryManagerRecyclerView);
+
+        Animations.AnimateRecyclerView(pantryManagerRecyclerView);
     }
 
     @Override

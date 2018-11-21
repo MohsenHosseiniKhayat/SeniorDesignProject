@@ -30,7 +30,7 @@ public class IngredientDetailActivity extends AppCompatActivity {
      * Retrieves views and performs their setup
      */
     private void setupView() {
-        setContentView(R.layout.activity_ingredient_detail_junk);
+        setContentView(R.layout.activity_ingredient_detail);
         nameTextView = (TextView) findViewById(R.id.ingredientNameTextView);
         measurementUnitTextView = (TextView) findViewById(R.id.ingredientMeasurementUnitTextView);
         quantityTextView = (TextView) findViewById(R.id.ingredientQuantityTextView);

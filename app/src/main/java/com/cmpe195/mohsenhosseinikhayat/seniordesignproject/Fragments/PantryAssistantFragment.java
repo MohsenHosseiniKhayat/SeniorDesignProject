@@ -1,8 +1,10 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Fragments;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,24 +12,31 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Adapters.PantryAssistantRecyclerAdapter;
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.CustomViews.Animations;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.ViewModels.PantryAssistantViewModel;
+import com.skyfishjy.library.RippleBackground;
 import com.vikramezhil.droidspeech.DroidSpeech;
 import com.vikramezhil.droidspeech.OnDSListener;
+import com.willowtreeapps.spruce.Spruce;
+import com.willowtreeapps.spruce.animation.DefaultAnimations;
+import com.willowtreeapps.spruce.sort.DefaultSort;
 
 import java.util.List;
 
 public class PantryAssistantFragment extends Fragment implements PantryAssistantRecyclerAdapter.ItemClickListener, OnDSListener
 {
     private DroidSpeech droidSpeech;
-    private Button speechButton;
+    private FloatingActionButton speechButton;
     private Button confirmButton;
     private PantryAssistantViewModel model;
     private RecyclerView pantryReceiptRecyclerView;
     private PantryAssistantRecyclerAdapter pantryReceiptArrayAdapter;
+    private RippleBackground speechButtonRippleBackground;
 
     public PantryAssistantFragment()
     {
@@ -54,10 +63,10 @@ public class PantryAssistantFragment extends Fragment implements PantryAssistant
         droidSpeech.setContinuousSpeechRecognition(true);
         droidSpeech.setPreferredLanguage("en-US");
         droidSpeech.setOneStepVerifyConfirmTextColor(R.color.white_color);
-        droidSpeech.setShowRecognitionProgressView(true);
+        droidSpeech.setShowRecognitionProgressView(false);
 
         //Setup speechButton
-        speechButton = (Button) view.findViewById(R.id.speechButton);
+        speechButton = (FloatingActionButton) view.findViewById(R.id.speechButton);
         speechButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +109,10 @@ public class PantryAssistantFragment extends Fragment implements PantryAssistant
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
 
         itemTouchHelper.attachToRecyclerView(pantryReceiptRecyclerView);
+
+        speechButtonRippleBackground = view.findViewById(R.id.speechButtonRippleBackground);
+
+        Animations.AnimateRecyclerView(pantryReceiptRecyclerView);
     }
 
     /**
@@ -121,6 +134,7 @@ public class PantryAssistantFragment extends Fragment implements PantryAssistant
     public void speechButtonClicked()
     {
         droidSpeech.startDroidSpeechRecognition();
+        speechButtonRippleBackground.startRippleAnimation();
         model.parseSpeech("Banana");
         pantryReceiptArrayAdapter = new PantryAssistantRecyclerAdapter
                 (this.getActivity(), model.getIngredientCommands(), model);
@@ -154,6 +168,7 @@ public class PantryAssistantFragment extends Fragment implements PantryAssistant
         pantryReceiptRecyclerView.setAdapter(pantryReceiptArrayAdapter);
         pantryReceiptArrayAdapter.setClickListener(this);
         pantryReceiptArrayAdapter.notifyDataSetChanged();
+        speechButtonRippleBackground.stopRippleAnimation();
     }
 
     @Override

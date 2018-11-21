@@ -1,5 +1,6 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Repositories;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.BogusGenerator;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.IngredientCommand;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.MeasurementUnit;
@@ -26,7 +27,11 @@ public class PantryRepository {
 
         myIngredients = new ArrayList<>();
         ingredientsHashMap = new HashMap<String, Ingredient>();
-        tempCreateIngredientsForTesting();
+        ArrayList<Ingredient> bogusIngredients = BogusGenerator.generateBogusIngredients();
+        for (int i = 0; i < bogusIngredients.size(); i++)
+        {
+            ingredientsHashMap.put(bogusIngredients.get(i).getName(), bogusIngredients.get(i));
+        }
     }
 
 
@@ -110,6 +115,12 @@ public class PantryRepository {
      */
     public Ingredient getIngredientWithName(String ingredientName) {
 
-        return ingredientsHashMap.get(ingredientName);
+        Ingredient result = ingredientsHashMap.get(ingredientName);
+        /*if (result == null && !ingredientName.equals("inaudible"))
+        {
+            throw new IllegalArgumentException(ingredientName + " is not found");
+        }*/
+
+        return result;
     }
 }

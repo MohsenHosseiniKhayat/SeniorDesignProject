@@ -41,6 +41,8 @@ dependencies {
     implementation 'com.xw.repo:bubbleseekbar:3.8'
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    implementation 'com.willowtreeapps.spruce:spruce-android:1.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
