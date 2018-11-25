@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.BogusGenerator;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Ingredient;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 
@@ -18,9 +19,6 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
     private ItemClickListener itemClickListener;
     private ArrayList<Ingredient> ingredientsList;
     private LayoutInflater inflater;
-
-    int[] images = {R.mipmap.hamburger, R.mipmap.lasagna, R.mipmap.mushrooms,R.mipmap.potattoes,
-            R.mipmap.salmon,R.mipmap.scallops,R.mipmap.shrimp2};
 
     public PantryManagerRecyclerAdapter(Context context, ArrayList<Ingredient> ingredientsList) {
         this.inflater = LayoutInflater.from(context);
@@ -43,7 +41,7 @@ public class PantryManagerRecyclerAdapter extends RecyclerView.Adapter<PantryMan
         holder.nameTextView.setText(currentIngredient.getName());
         holder.quantityTextView.setText(String.valueOf(currentIngredient.getQuantity()));
         holder.measurementUnitTextView.setText(String.valueOf(currentIngredient.getMeasuringUnit().toString().toLowerCase()));
-        holder.imageView.setImageResource(images[position % images.length]);
+        holder.imageView.setImageResource(BogusGenerator.getImageID(currentIngredient.getName()));
     }
 
     @Override

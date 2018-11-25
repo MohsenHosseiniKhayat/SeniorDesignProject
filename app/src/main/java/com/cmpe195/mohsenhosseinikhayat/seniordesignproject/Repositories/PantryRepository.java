@@ -31,6 +31,7 @@ public class PantryRepository {
         for (int i = 0; i < bogusIngredients.size(); i++)
         {
             ingredientsHashMap.put(bogusIngredients.get(i).getName(), bogusIngredients.get(i));
+            myIngredients.add(bogusIngredients.get(i));
         }
     }
 

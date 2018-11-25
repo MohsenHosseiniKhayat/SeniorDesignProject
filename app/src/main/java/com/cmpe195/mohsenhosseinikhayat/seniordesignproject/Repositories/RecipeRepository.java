@@ -63,7 +63,7 @@ public class RecipeRepository {
         {
             Recipe currentRecipe = allRecipes.get(i);
 
-            if (currentRecipe.getName().contains(queryString))
+            if (currentRecipe.getName().toLowerCase().contains(queryString))
             {
                 results.add(currentRecipe);
             }

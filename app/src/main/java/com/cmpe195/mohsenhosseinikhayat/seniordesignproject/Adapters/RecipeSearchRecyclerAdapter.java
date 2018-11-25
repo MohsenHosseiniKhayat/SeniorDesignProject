@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.BogusGenerator;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.malinskiy.superrecyclerview.swipe.BaseSwipeAdapter;
@@ -39,7 +40,7 @@ public class RecipeSearchRecyclerAdapter extends BaseSwipeAdapter<RecipeSearchRe
         holder.descriptionTextView.setText(currentRecipe.getDescription());
         holder.ratingBar.setNumStars(4);
         holder.caloriesTextView.setText(String.valueOf(currentRecipe.getCalories()));
-        holder.imageView.setImageResource(images[position % images.length]);
+        holder.imageView.setImageResource(BogusGenerator.getImageID(currentRecipe.getName()));
         this.setOnClickListener(itemClickListener);
     }
 

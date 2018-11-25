@@ -150,6 +150,9 @@ public class PantryAssistantViewModel
 
         compatibleMeasurmentUnits.put(MeasurementUnit.MILLILITER,
                 new MeasurementUnit[] {MeasurementUnit.MILLILITER, MeasurementUnit.LITER, MeasurementUnit.CUP, MeasurementUnit.TEASPOON, MeasurementUnit.TABLESPOON});
+
+        compatibleMeasurmentUnits.put(MeasurementUnit.PC, new MeasurementUnit[]{
+                MeasurementUnit.PC});
     }
 
     /**

@@ -1,11 +1,10 @@
 package com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Repositories.PantryRepository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 public class BogusGenerator
 {
@@ -384,7 +383,7 @@ public class BogusGenerator
         hashmap15.put(pr.getIngredientWithName("salt"), 0.5);
         hashmap15.put(pr.getIngredientWithName("mayonnaise"), 0.5);
         hashmap15.put(pr.getIngredientWithName("flour"), 1.5);
-        hashmap15.put(pr.getIngredientWithName("jalepeno"), 1.5);
+        hashmap15.put(pr.getIngredientWithName("jalapeno"), 1.5);
 
         Recipe recipe15 = new Recipe("Fish Tacos",
                 "Serve with homemade pico de gallo, and lime wedges to squeeze on top!",
@@ -506,7 +505,7 @@ public class BogusGenerator
 
         Recipe recipe20 = new Recipe("Spicy Vegan Potato Curry",
                 "Abundant spices make this better than any restaurant curry.",
-                hashmap19,
+                hashmap20,
                 new String [] {
                 "Place potatoes into a large pot and cover with salted water. Bring to a boil over high heat, then reduce heat to medium-low, cover, and simmer until just tender, about 15 minutes. Drain and allow to steam dry for a minute or two.",
                         "Meanwhile, heat the vegetable oil in a large skillet over medium heat. Stir in the onion and garlic; cook and stir until the onion has softened and turned translucent, about 5 minutes. Season with cumin, cayenne pepper, curry powder, garam masala, ginger, and salt; cook for 2 minutes more. Add the tomatoes, garbanzo beans, peas, and potatoes. Pour in the coconut milk, and bring to a simmer. Simmer 5 to 10 minutes before serving."
@@ -516,7 +515,7 @@ public class BogusGenerator
                 MealType.DINNER,
                 407);
 
-        recipes.add(recipe19);
+        recipes.add(recipe20);
 
         return recipes;
     }
@@ -579,7 +578,7 @@ public class BogusGenerator
         ingredients.add(new Ingredient("banana", MeasurementUnit.POUND, 0));
         ingredients.add(new Ingredient("cod fish", MeasurementUnit.POUND, 0));
         ingredients.add(new Ingredient("cabbage", MeasurementUnit.POUND, 0));
-        ingredients.add(new Ingredient("jalepeno", MeasurementUnit.OUNCE, 0));
+        ingredients.add(new Ingredient("jalapeno", MeasurementUnit.OUNCE, 0));
         ingredients.add(new Ingredient("sushi rice", MeasurementUnit.CUP, 0));
         ingredients.add(new Ingredient("salmon", MeasurementUnit.OUNCE, 0));
         ingredients.add(new Ingredient("sea weed", MeasurementUnit.GRAM, 0));
@@ -592,5 +591,184 @@ public class BogusGenerator
 
 
         return ingredients;
+    }
+
+
+    public static int getImageID(String name)
+    {
+        switch (name)
+        {
+            case "Spicy Vegan Potato Curry":
+                return R.mipmap.vegan_curry;
+            case "Baked French Fries":
+                return R.mipmap.baked_french_fries;
+            case "Guacamole":
+                return R.mipmap.guacamole;
+            case "Sushi":
+                return R.mipmap.sushi;
+            case "Breakfast Burritos":
+                return R.mipmap.breakfast_burritos;
+            case "Fish Tacos":
+                return R.mipmap.fish_tacos;
+            case "Banana Muffins":
+                return R.mipmap.banana_muffins;
+            case "Pancake":
+                return R.mipmap.pancake;
+            case "Calzone":
+                return R.mipmap.calzone;
+            case "Spicy Turkey Burger":
+                return R.mipmap.spicy_turkey_burger;
+            case "Classic Lasagna":
+                return R.mipmap.classic_lasagna;
+            case "Penne Pesto Pasta Salad":
+                return R.mipmap.pesto_penne;
+            case "Tzatziki":
+                return R.mipmap.tzatziki;
+            case "Sizzlin Fajitas":
+                return R.mipmap.sizzlin_fajitas;
+            case "Roasted Turkey":
+                return R.mipmap.roasted_turkey;
+            case "Hummus":
+                return R.mipmap.hummus;
+            case "Rusty Chicken Thighs":
+                return R.mipmap.rusty_chicken_thighs;
+            case "Indian-Style Chicken and Onions":
+                return R.mipmap.indian_style_chicken_and_onions;
+            case "Mexican Rice":
+                return R.mipmap.mexican_rice;
+            case "Baked Ziti":
+                return R.mipmap.baked_ziti;
+            case "black olive":
+                return R.mipmap.black_olive;
+            case "pepper":
+                return R.mipmap.pepper;
+            case "penne":
+                return R.mipmap.penne;
+            case "salmon":
+                return R.mipmap.salmon;
+            case "beef":
+                return R.mipmap.beef;
+            case "garbanzo bean":
+                return R.mipmap.garbanzo_bean;
+            case "tomato":
+                return R.mipmap.tomato;
+            case "tomato sauce":
+                return R.mipmap.tomato_sauce;
+            case "masala":
+                return R.mipmap.masala;
+            case "water":
+                return R.mipmap.water;
+            case "olive oil":
+                return R.mipmap.olive_oil;
+            case "canola oil":
+                return R.mipmap.canola_oil;
+            case "vegetable oil":
+                return R.mipmap.vegetable_oil;
+            case "milk":
+                return R.mipmap.milk;
+            case "cumin":
+                return R.mipmap.cumin;
+            case "lasagna noodles":
+                return R.mipmap.lasagna_noodles;
+            case "sour cream":
+                return R.mipmap.sour_cream;
+            case "rice":
+                return R.mipmap.rice;
+            case "cheese":
+                return R.mipmap.cheese;
+            case "cilantro":
+                return R.mipmap.cilantro;
+            case "turkey":
+                return R.mipmap.turkey;
+            case "cucumber":
+                return R.mipmap.cucumber;
+            case "pasta":
+                return R.mipmap.pasta;
+            case "egg":
+                return R.mipmap.egg;
+            case "jalapeno":
+                return R.mipmap.jalapeno;
+            case "baking soda":
+                return R.mipmap.baking_soda;
+            case "baking powder":
+                return R.mipmap.baking_powder;
+            case "cabbage":
+                return R.mipmap.cabbage;
+            case "sugar":
+                return R.mipmap.sugar;
+            case "oregano":
+                return R.mipmap.oregano;
+            case "dill":
+                return R.mipmap.dill;
+            case "chicken thigh":
+                return R.mipmap.chicken_thigh;
+            case "lemon juice":
+                return R.mipmap.lemon_juice;
+            case "basil":
+                return R.mipmap.basil;
+            case "parsley":
+                return R.mipmap.parsley;
+            case "parmesan":
+                return R.mipmap.parmesan;
+            case "mayonnaise":
+                return R.mipmap.mayonnaise;
+            case "soy":
+                return R.mipmap.soy;
+            case "lime":
+                return R.mipmap.lime;
+            case "garlic":
+                return R.mipmap.garlic;
+            case "vinegar":
+                return R.mipmap.vinegar;
+            case "salt":
+                return R.mipmap.salt;
+            case "onion":
+                return R.mipmap.onion;
+            case "chicken":
+                return R.mipmap.chicken;
+            case "rosemary":
+                return R.mipmap.rosemary;
+            case "yogurt":
+                return R.mipmap.yogurt;
+            case "tortilla":
+                return R.mipmap.tortilla;
+            case "hamburger bun":
+                return R.mipmap.hamburger_bun;
+            case "sausage":
+                return R.mipmap.sausage;
+            case "butter":
+                return R.mipmap.butter;
+            case "flour":
+                return R.mipmap.flour;
+            case "banana":
+                return R.mipmap.banana;
+            case "cod fish":
+                return R.mipmap.cod_fish;
+            case "sushi":
+                return R.mipmap.sushi;
+            case "sea weed":
+                return R.mipmap.sea_weed;
+            case "avocado":
+                return R.mipmap.avocado;
+            case "wasabi":
+                return R.mipmap.wasabi;
+            case "potato":
+                return R.mipmap.potato;
+            case "paprika":
+                return R.mipmap.paprika;
+            case "chile":
+                return R.mipmap.chile;
+            case "sushi rice":
+                return R.mipmap.sushi_rice;
+            case "chicken drumstick":
+                return R.mipmap.drumstick;
+            case "mozzarella":
+                return R.mipmap.mozzarella;
+            case "tahini":
+                return R.mipmap.tahini;
+                default:
+                    return 0;
+
+        }
     }
 }

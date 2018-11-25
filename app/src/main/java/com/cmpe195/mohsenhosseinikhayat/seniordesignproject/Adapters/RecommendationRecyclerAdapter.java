@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.BogusGenerator;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.Recipe;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
 import com.malinskiy.superrecyclerview.swipe.BaseSwipeAdapter;
@@ -32,9 +33,6 @@ public class RecommendationRecyclerAdapter extends BaseSwipeAdapter<Recommendati
         this.recipesList = new ArrayList<>(ingredients.keySet());
     }
 
-    int[] images = {R.mipmap.hamburger, R.mipmap.lasagna, R.mipmap.mushrooms,R.mipmap.potattoes,
-            R.mipmap.salmon,R.mipmap.scallops,R.mipmap.shrimp2};
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe currentRecipe = recipesList.get(position);
@@ -44,7 +42,7 @@ public class RecommendationRecyclerAdapter extends BaseSwipeAdapter<Recommendati
         holder.completionTextView.setText(ingredients.get(currentRecipe).toString());
         holder.ratingBar.setNumStars(3);
         holder.caloriesTextView.setText(String.valueOf(currentRecipe.getCalories()));
-        holder.imageView.setImageResource(images[position % images.length]);
+        holder.imageView.setImageResource(BogusGenerator.getImageID(currentRecipe.getName()));
         this.setOnClickListener(itemClickListener);
     }
 
