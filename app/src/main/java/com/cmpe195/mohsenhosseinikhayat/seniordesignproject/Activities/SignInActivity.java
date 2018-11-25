@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import com.shaishavgandhi.loginbuttons.GoogleButton;
 
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.Models.User;
 import com.cmpe195.mohsenhosseinikhayat.seniordesignproject.R;
@@ -34,10 +35,9 @@ public class SignInActivity extends AppCompatActivity
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        GoogleButton signInButton = findViewById(R.id.googleSignInButton);
 
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.googleSignInButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
